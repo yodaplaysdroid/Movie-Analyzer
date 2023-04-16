@@ -4,14 +4,40 @@ import pickle
 from pathlib import Path
 import os
 
+
+def get_unique(input_list):
+
+    unique_list = []
+    seen = set()
+    for item in input_list:
+        if item not in seen:
+            unique_list.append(item)
+            seen.add(item)
+
+    return unique_list
+
+
 def movie_id_to_movie_name(movie_ids):
     movies = []
+    sorted_movie_ids = movie_ids.copy()
+    sorted_movie_ids.sort()
+    movie_ids_arrangements = []
+    for id in sorted_movie_ids:
+        movie_ids_arrangements.append(movie_ids.index(id))
     chunksize = 10 ** 6
     for chunk in pd.read_csv('raw/movies.csv', chunksize=chunksize):
+        if len(sorted_movie_ids) == 0:
+            break
         for index, row in chunk.iterrows():
-            for movie_id in movie_ids:
-                if movie_id == row[0]:
-                    movies.append(row[1])
+            if len(sorted_movie_ids) == 0:
+                break
+            if sorted_movie_ids[0] == row[0]:
+                movies.append(row[1])
+                sorted_movie_ids.pop(0)
+    temp_dict = {'movies':movies, 'arrangement':movie_ids_arrangements}
+    df = pd.DataFrame(temp_dict)
+    df = df.sort_values('arrangement', ascending=True)
+    movies = df['movies'].tolist()
     return movies
 
 
@@ -29,7 +55,7 @@ def search_movie_tag(input_phrase, extended=False):
                 for words in separated_input_phrase:
                     if words in str(row[2]):
                         filtered_movie_id_2.append(row[1])
-    filtered_movie_id = list(set(filtered_movie_id_1)) + list(set(filtered_movie_id_2))
+    filtered_movie_id = get_unique(filtered_movie_id_1) + get_unique(filtered_movie_id_2)
     return filtered_movie_id
 
 
@@ -67,8 +93,8 @@ def search_genome_tag(input_phrase, extended=False):
                     for words in separated_input_phrase:
                         if words in str(row[1]):
                             filtered_tag_id_2.append(row[0])
-    filtered_tag_id = list(set(filtered_tag_id_1)) + list(set(filtered_tag_id_2))
-    return list(set(filtered_tag_id))
+    filtered_tag_id = filtered_tag_id_1 + filtered_tag_id_2
+    return get_unique(filtered_tag_id)
 
 
 def search_movie_name(input_phrase, extended=False):
@@ -85,7 +111,7 @@ def search_movie_name(input_phrase, extended=False):
                 for words in separated_input_phrase:
                     if words in str(row[1]):
                         filtered_movie_names_2.append(row[1])
-    filtered_movie_names = list(set(filtered_movie_names_1)) + list(set(filtered_movie_names_2))
+    filtered_movie_names = get_unique(filtered_movie_names_1) + get_unique(filtered_movie_names_2)
     return filtered_movie_names
 
 
@@ -116,11 +142,7 @@ def search(input_phrase, extended=False):
 if __name__ == '__main__':
     start_time = time.time()
 
-    genome_tags = search_genome_tag('action')
-    temp = genome_tag_to_movie_id(genome_tags)
-    temp = movie_id_to_movie_name(temp)
-
-    print(temp)
+    print(movie_id_to_movie_name([5, 30, 25, 20, 10, 15]))
 
     end_time = time.time()
 
