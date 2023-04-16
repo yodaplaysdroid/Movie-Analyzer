@@ -90,7 +90,7 @@ def search_movie_name(input_phrase, extended=False):
 
 
 def search(input_phrase, extended=False):
-    path = 'data/' + input_phrase
+    path = 'scripts/data/' + input_phrase
     if Path(path).is_file():
         with open(path, 'rb') as fp:
             return pickle.load(fp)
@@ -99,24 +99,28 @@ def search(input_phrase, extended=False):
 
     genome_tags = search_genome_tag(input_phrase, extended)
     temp = genome_tag_to_movie_id(genome_tags)
+    temp = movie_id_to_movie_name(temp)
     movie_names = movie_names + temp
 
     movie_tags = search_movie_tag(input_phrase, extended)
     temp = movie_id_to_movie_name(movie_tags)
     movie_names = movie_names + temp
+    movie_names = list(set(movie_names))
 
     with open(path, 'wb') as fp:
         pickle.dump(movie_names, fp)
 
-    return list(set(movie_names))
+    return movie_names
 
 
 if __name__ == '__main__':
     start_time = time.time()
 
-    # print(search('avengers'))
-    ids = genome_tag_to_movie_id([10])
-    print(movie_id_to_movie_name(ids))
+    genome_tags = search_genome_tag('action')
+    temp = genome_tag_to_movie_id(genome_tags)
+    temp = movie_id_to_movie_name(temp)
+
+    print(temp)
 
     end_time = time.time()
 
