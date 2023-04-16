@@ -1,10 +1,9 @@
 # Movie Recommender System with MovieLens Dataset
 ### Packages
 + Pandas
-+ Pickle
 
 ### Dataset Source
-https://grouplens.org/datasets/movielens/25m/ \\
+https://grouplens.org/datasets/movielens/25m/ \
 extracted and placed into a directory named 'raw'
 
 ### Contents
