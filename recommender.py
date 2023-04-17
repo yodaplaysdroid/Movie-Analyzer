@@ -142,7 +142,7 @@ def search(input_phrase, extended=False):
 if __name__ == '__main__':
     start_time = time.time()
 
-    print(movie_id_to_movie_name([5, 30, 25, 20, 10, 15]))
+    # pass
 
     end_time = time.time()
 
