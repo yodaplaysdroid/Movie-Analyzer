@@ -1,4 +1,5 @@
 import pandas as pd
+import pickle
 
 
 if __name__ == '__main__':
@@ -8,10 +9,6 @@ if __name__ == '__main__':
     for i, chunk in enumerate(df):
         grouped = chunk.groupby('tagId')
         
-        # Loop over each group in the chunk
         for name, group in grouped:
-            # Define the output filename for the group
             filename = f'genome_scores/{name}_{i}.csv'
-            
-            # Write the group to a separate CSV file
             group.to_csv(filename, index=False)
