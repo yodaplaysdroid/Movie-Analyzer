@@ -1,14 +1,14 @@
 # Movie Recommender System for MovieLens25M Dataset
-School Project : Simple Movie Recommender System using Correlation \
+School Project : Simple Movie Recommender System using Correlation 
 
 
 ### 1 Requirements
-1. According to the given dataset, design a rating-based movie recommender system. \
+1. According to the given dataset, design a rating-based movie recommender system. 
 2. For the given users' attributes, design a movie recommender system that predict users' favorite.
 
 
 ### 2 Dataset Source
-MovieLens25M Dataset URL : https://grouplens.org/datasets/movielens/25m/ \
+MovieLens25M Dataset URL : https://grouplens.org/datasets/movielens/25m/ 
 + After downloaded, Dataset is then extracted to a relative directory 'raw'
 
 
