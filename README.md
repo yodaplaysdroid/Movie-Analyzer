@@ -1,21 +1,30 @@
-# Movie Recommender System with MovieLens Dataset
-### Packages
-+ Pandas
+# Movie Recommender System for MovieLens25M Dataset
+School Project : Simple Movie Recommender System using Correlation \
 
-### Dataset Source
-https://grouplens.org/datasets/movielens/25m/ \
-extracted and placed into a directory named 'raw'
 
-### Contents
+### 1 Requirements
+1. According to the given dataset, design a rating-based movie recommender system. \
+2. For the given users' attributes, design a movie recommender system that predict users' favorite.
 
-#### data folder
-Contains search history to prevent save results
 
-#### init.py
-Creates indexed for genome scores for operation time reduction
+### 2 Dataset Source
+MovieLens25M Dataset URL : https://grouplens.org/datasets/movielens/25m/ \
++ After downloaded, Dataset is then extracted to a relative directory 'raw'
 
-#### recommender.py
-Contains all recommender methods
 
-#### user_interface.py
-Console-based program that user can use to operate the recommender methods
+### 3 Contents
+
+##### i. Folder : data
+Contains search history to speed up future queries that searches for the same keyword.
+
+##### ii. Python File : Init.py
+Creates separate files for all different genome tags to reduce operation time when working with genome tags score.
+
+##### iii. Python File : Recommender.py
+Contains all rating-based recommendation methods and some basic utility functions.
+
+##### iv. Python File : User.py
+Contains all user feature-based recommendation methods.
+
+##### v. Python File : main.py
+Main Console-based program for the whole recommender system.
