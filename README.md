@@ -12,7 +12,12 @@ MovieLens25M Dataset URL : https://grouplens.org/datasets/movielens/25m/
 + After downloaded, Dataset is then extracted to a relative directory 'raw'
 
 
-### 3 Contents
+### 3 Dependencies
+- Python 3.11
+- Pandas 2.0
+
+
+### 4 Contents
 
 ##### i. Folder : data
 Contains search history to speed up future queries that searches for the same keyword.
@@ -24,7 +29,7 @@ Creates separate files for all different genome tags to reduce operation time wh
 Contains all rating-based recommendation methods and some basic utility functions.
 
 ##### iv. Python File : User.py
-Contains all user feature-based recommendation methods.
+User Class definition.
 
 ##### v. Python File : main.py
 Main Console-based program for the whole recommender system.
