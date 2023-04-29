@@ -13,6 +13,7 @@ MovieLens25M Dataset URL : https://grouplens.org/datasets/movielens/25m/
 
 
 ### 3 Dependencies
+- OS : Linux Kernel 5.15
 - Python 3.11
 - Pandas 2.0
 
