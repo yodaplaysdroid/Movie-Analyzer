@@ -9,11 +9,10 @@ School Project : Simple Movie Recommender System using Correlation
 
 ### 2 Dataset Source
 MovieLens25M Dataset URL : https://grouplens.org/datasets/movielens/25m/ 
-+ After downloaded, Dataset is then extracted to a relative directory 'raw'
++ After downloaded, Dataset is then extracted to a relative directory 'data/ml-25m'
 
 
 ### 3 Dependencies
-- OS : Linux Kernel 5.15
 - Python 3.11
 - Pandas 2.0
 
