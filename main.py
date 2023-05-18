@@ -1,6 +1,6 @@
-import Recommender
-import Init
-import User
+import scripts.recommender as Recommender
+import scripts.init as Init
+import scripts.user as User
 import os
 import time
 
